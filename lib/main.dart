@@ -4,7 +4,6 @@ import 'routes.dart';
 import 'views/animated.dart';
 import 'views/connectivity.dart';
 import 'views/counter.dart';
-import 'views/future.dart';
 import 'views/home.dart';
 import 'views/rotation.dart';
 import 'views/search.dart';
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FutureView(),
+      home: const MenuView(),
       routes: appRoutes,
     );
   }
