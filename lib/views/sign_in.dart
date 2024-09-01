@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class SignInView extends StatefulWidget {
@@ -56,9 +58,9 @@ class _SignInViewState extends State<SignInView> {
                   builder: (context) {
                     return ElevatedButton(
                       onPressed: () {
-                        if (Form.of(context)?.validate() ?? false) {
-                          print('🥶 _username $_username');
-                          print('🥶 _password $_password');
+                        if (Form.of(context).validate() ?? false) {
+                          log('🥶 _username $_username');
+                          log('🥶 _password $_password');
                         }
                       },
                       child: const Text('Sign In'),

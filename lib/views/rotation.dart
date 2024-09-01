@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class RotationView extends StatefulWidget {
@@ -7,8 +9,7 @@ class RotationView extends StatefulWidget {
   State<RotationView> createState() => _RotationViewState();
 }
 
-class _RotationViewState extends State<RotationView>
-    with WidgetsBindingObserver {
+class _RotationViewState extends State<RotationView> with WidgetsBindingObserver {
   ///
   Size _size = WidgetsBinding.instance.window.physicalSize;
 
@@ -30,7 +31,7 @@ class _RotationViewState extends State<RotationView>
     if (_size != size) {
       _size = size;
       final isPortraitMode = size.width < size.height;
-      print('🥶 isPortraitMode $isPortraitMode');
+      log('🥶 isPortraitMode $isPortraitMode');
     }
   }
 

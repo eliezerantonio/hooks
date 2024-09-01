@@ -6,10 +6,9 @@ import '../main.dart';
 
 class HomeView extends HookWidget {
   const HomeView({super.key});
-
   @override
   Widget build(BuildContext context) {
-    final moutedFn = useIsMounted();
+    // final moutedFn = useIsMounted();
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -17,7 +16,8 @@ class HomeView extends HookWidget {
           onPressed: () async {
             final ok = await showConfirmDialog(context);
 
-            final mounted = moutedFn();
+            // final mounted = moutedFn();
+            final mounted = context.mounted;
             if (ok && mounted) {
               Navigator.pushAndRemoveUntil(
                 context,

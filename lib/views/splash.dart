@@ -8,25 +8,17 @@ class SplashView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mountedFn = useIsMounted();
     useEffect(() {
       Future<void> init() async {
-        await Future.delayed(
-          const Duration(seconds: 1),
-        );
+        await Future.delayed(const Duration(seconds: 1));
 
-        final mounted = mountedFn();
+        final mounted = context.mounted;
         if (mounted) {
-          Navigator.pushReplacementNamed(
-            context,
-            Routes.home,
-          );
+          Navigator.pushReplacementNamed(context, Routes.home);
         }
       }
 
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) => init(),
-      );
+      WidgetsBinding.instance.addPostFrameCallback((_) => init());
       return null;
     });
     return const Scaffold(
