@@ -7,36 +7,33 @@ class CounterView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final numbers = useState<List<int>>([]);
-    final counter = useValueNotifier<int>(0);
-
+    final names = useState<Map<String, String>>({});
     return Scaffold(
       appBar: AppBar(
-        title: ValueListenableBuilder(
-            valueListenable: counter,
-            builder: (context, value, _) {
-              return Text(value.toString());
-            }),
+        title: Text(names.value['flutter'] ?? ''),
         actions: [
           IconButton(
             onPressed: () {
-              counter.value++;
+              final map = {...names.value};
+              map['flutter'] = 'flutter 3.x';
+              names.value = map;
             },
             icon: const Icon(Icons.person),
-          )
+          ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: numbers.value.length,
-        itemBuilder: (_, index) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text('${numbers.value[index]}'),
-        ),
+      body: Center(
+        child: ListView.builder(
+            itemBuilder: (context, index) {
+              return ListTile(title: Text('${numbers.value[index]}'));
+            },
+            itemCount: numbers.value.length),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
           final list = [...numbers.value];
-          list.add(list.length + 1);
+          list.add(numbers.value.length + 1);
           numbers.value = list;
         },
       ),
